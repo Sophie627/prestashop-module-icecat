@@ -11,7 +11,7 @@
                     {if isset($suppliers)}
                         <div>
                         <h1>Suppliers</h1>
-                        <select id="suppliers" name="suppliers"  style="width: 30%; margin-bottom: 30px;" multiple size="5">
+                        <select id="suppliers" name="suppliers"  style="width: 33.33%; margin-bottom: 30px;" multiple size="5">
                         {foreach from=$suppliers item=supplier}
                             <option value="{$supplier.id_supplier}">{$supplier.meta_title}</option>
                         {/foreach}
