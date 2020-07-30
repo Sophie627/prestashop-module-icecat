@@ -1,0 +1,10 @@
+<SELECT id="sel" NAME="fruit" SIZE="4" MULTIPLE >
+<OPTION SELECTED> Apples
+<OPTION value="Bananas.html"> Bananas
+<OPTION value="Oranges.html"> Oranges
+<OPTION value="Watermelon.html"> Watermelon
+<OPTION value="Kiwi.html"> Kiwi
+</SELECT>
+document.getElementById("sel").onclick = function(d){
+  window.location = this.value;
+};
