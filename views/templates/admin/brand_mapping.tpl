@@ -7,40 +7,39 @@
                 </h3>
                 <div class="card-block">
                     <div class="card-text">
-
-                    {if isset($suppliers)}
-                        <div>
-                        <h1>Suppliers</h1>
-                        <select id="suppliers" name="suppliers"  style="width: 33.33%; margin-bottom: 30px;" multiple size="5">
-                        {foreach from=$suppliers item=supplier}
-                            <option value="{$supplier.id_supplier}">{$supplier.meta_title}</option>
-                        {/foreach}
-                        </select>
-                        </div>
-                    {/if}
-                    <div class="row">
-                    {if isset($brands)}
-                        <div class="col-md-4">
-                            <h1>Icecat brands</h1>
-                            <div id="list-left" class="list-group col" onmousedown="on_mousedown(event)">
-                            {foreach from=$brands item=brand key=key}
-                                <div class="list-group-item" data-id="{$key}" data-label="{$brand}" draggable="true">{$brand}</div>
-                            {/foreach}
+                        {if isset($suppliers)}
+                            <div>
+                                <h1>Suppliers</h1>
+                                <select id="suppliers" name="suppliers"  style="width: 30%; margin-bottom: 30px;" multiple size="5">
+                                    {foreach from=$suppliers item=supplier}
+                                        <option class="list-group-item" value="{$supplier.id_supplier}">
+                                            {$supplier.meta_title}
+                                        </option>
+                                    {/foreach}
+                                </select>
                             </div>
-                        </div>
-                    {/if}
-                        <div class="col-md-2"></div>
-                        <div class="col-md-4">
-                            <h1>Feed brands</h1>
-                            <div id="list-right" class="list-group col" ondrop="on_drop(event);" ondragover="on_dragover(event)" ondragleave="on_dragleave(event)">
+                        {/if}
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h1>Icecat brands</h1>
+                                <div id="scrollArea" class="clusterize-scroll list-group col">
+                                    <div id="contentArea" class="clusterize-content">
+                                        <div class="clusterize-no-data">Loading data…</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-4">
+                                <h1>Feed brands</h1>
+                                <div id="list-right" class="list-group col" ondrop="on_feed_drop(event);" ondragover="on_feed_dragover(event)" ondragleave="on_feed_dragleave(event)" onmousedown="on_feed_mousedown(event)">
+                                </div>
+                            </div>
                         </div>
                         <hr>
                     </div>
                 </div>
                 <div class="card-footer">
- 
+
                 </div>
                 <script>
                     var mapping_ajax_link = "{$mapping_ajax_link}";
