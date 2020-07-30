@@ -22,8 +22,8 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <h1>Icecat brands</h1>
-                                <div id="scrollArea" class="clusterize-scroll list-group col">
-                                    <div id="contentArea" class="clusterize-content">
+                                <div id="scrollIcecatArea" class="clusterize-scroll list-group col">
+                                    <div id="contentIcecatArea" class="clusterize-content" ondrop="on_icecat_drop(event);" ondragover="on_icecat_dragover(event)" ondragleave="on_icecat_dragleave(event)" onmousedown="on_icecat_mousedown(event)">
                                         <div class="clusterize-no-data">Loading data…</div>
                                     </div>
                                 </div>
@@ -31,22 +31,25 @@
                             <div class="col-md-2"></div>
                             <div class="col-md-4">
                                 <h1>Feed brands</h1>
-                                <div id="list-right" class="list-group col" ondrop="on_feed_drop(event);" ondragover="on_feed_dragover(event)" ondragleave="on_feed_dragleave(event)" onmousedown="on_feed_mousedown(event)">
+                                <div id="scrollFeedArea" class="clusterize-scroll list-group col">
+                                    <div id="contentFeedArea" class="clusterize-content" ondrop="on_feed_drop(event);" ondragover="on_feed_dragover(event)" ondragleave="on_feed_dragleave(event)" onmousedown="on_feed_mousedown(event)">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <hr>
                     </div>
+                    <hr>
                 </div>
-                <div class="card-footer">
-
-                </div>
-                <script>
-                    var mapping_ajax_link = "{$mapping_ajax_link}";
-                    var supplier_brand_mapping = [];
-                    var is_changed = false;
-                </script>
             </div>
+            <div class="card-footer">
+
+            </div>
+            <script>
+                var mapping_ajax_link = "{$mapping_ajax_link}";
+                var supplier_brand_mapping = [];
+                var is_changed = false;
+            </script>
         </div>
+    </div>
     </div>
 </form>

@@ -17,8 +17,8 @@ $(document).ready(function(){
                 });
                 var clusterize = new Clusterize({
                     rows: brand_data,
-                    scrollId: 'scrollArea',
-                    contentId: 'contentArea'
+                    scrollId: 'scrollIcecatArea',
+                    contentId: 'contentIcecatArea'
                 });
             }
         },
@@ -36,11 +36,16 @@ $(document).ready(function(){
             },
             success: function (data) {
                 if(typeof data.status !== "undefined"){
-                    console.log(data.headers);
-                    document.getElementById("list-right").innerHTML = "";
-                    data.supplier_brands.forEach(element => {
-                        console.log(element.manufacturer);
-                        document.getElementById("list-right").innerHTML+='<div class="list-group-item" id="feed" title="'+element.manufacturer+'" draggable="true">'+element.manufacturer+'</div>';
+                    // document.getElementById("contentFeedArea").innerHTML = '<div class="clusterize-no-data">Loading data…</div>';
+                    var brand_data = [];
+                    Object.entries(data.supplier_brands).forEach(entry => {
+                        const [key, value] = entry;
+                        brand_data.push('<div class="list-group-item" id="feed" data-id=key data-label=value.manufacturer draggable="true">' + value.manufacturer + '</div>');
+                    });
+                    var clusterize = new Clusterize({
+                        rows: brand_data,
+                        scrollId: 'scrollFeedArea',
+                        contentId: 'contentFeedArea'
                     });
                 }
             },
