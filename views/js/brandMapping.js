@@ -59,8 +59,12 @@ function on_feed_drop(event){
     event.target.classList.remove('highlight');
     var targetContent = event.target.textContent;
     if(selected_icecat_brand != null) {
-        if(targetContent.indexOf("->") == -1 || selected_icecat_brand != targetContent.substr(targetContent.indexOf("->")+3)){
+        if(targetContent.indexOf("->") < 0){
             event.target.textContent = event.target.textContent + " -> " + selected_icecat_brand;
+            supplier_brand_mapping.push([event.target.textContent, selected_icecat_brand]);
+            is_changed = true;
+        } else {
+            event.target.textContent = event.target.textContent.slice(0, targetContent.indexOf("->")) + " -> " + selected_icecat_brand;
             supplier_brand_mapping.push([event.target.textContent, selected_icecat_brand]);
             is_changed = true;
         }
@@ -103,8 +107,10 @@ function on_icecat_drop(event){
 }
 
 function on_feed_mousedown(event){
-    selected_feed_brand = event.target.textContent;
-    console.log(event.target);
+    if(event.target.textContent.indexOf('->') < 0) {
+        selected_feed_brand = event.target.textContent;
+        console.log(event.target);
+    }
 }
 
 function on_icecat_dragover(event){
