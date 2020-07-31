@@ -75,6 +75,7 @@ class PriceMappingAdminController extends ModuleAdminController
 		$_path = str_replace("/module/", "/modules/", Context::getContext()->link->getModuleLink('icecat', 'views'));
 		$_path = str_replace("/en/", "/", $_path);
 		$this->context->controller->addCSS('https://cdn.materialdesignicons.com/5.0.45/css/materialdesignicons.min.css');
+        $this->context->controller->addCSS('/admin023pexgcs/themes/new-theme/public/theme.css');
 		$this->context->controller->addCSS($_path . '/css/style.css', 'all');
 		$this->context->controller->addJS($_path . '/js/brandMapping.js');
 		$this->context->smarty->assign([
