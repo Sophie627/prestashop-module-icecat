@@ -1,12 +1,12 @@
 <form action="" method="POST" class="form form-horizontal" style="padding-top: 40px;">
-    <div class="justify-content-center">
+    <div class="justify-content-center row">
         <div class="col-xl-10">
             <div class="card">
                 <h3 class="card-header">
                     <i class="material-icons">settings</i> Mapping
                 </h3>
                 <div class="card-block">
-                    <div class="card-text">
+                    <div class="card-text" style="max-width: 100%">
                     <div class="row" style="padding: 10px; border-bottom: 2px solid #DBE6E9;">
                         <div class="col-md-9" style="border-right: 2px solid #DBE6E9;">
                             <div class="row">
