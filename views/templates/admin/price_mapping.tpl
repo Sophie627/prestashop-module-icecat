@@ -21,36 +21,30 @@
                                     {/if}
                                 </div>
                                 <div class="col-md-6">
-                                    {if isset($suppliers)}
-                                        <h1>Brands</h1>
-                                        <select id="suppliers" name="suppliers"  style="width: 100%; margin-bottom: 30px;" multiple size="5">
-                                        {foreach from=$suppliers item=supplier}
-                                            <option class="list-group-item" value="{$supplier.id_supplier}">{$supplier.meta_title}</option>
-                                        {/foreach}
-                                        </select>
-                                    {/if}
+                                    <h1>Brands</h1>
+                                    <div id="scrollBrandArea" class="clusterize-scroll list-group col">
+                                        <div id="contentBrandArea" class="clusterize-content">
+                                            <div class="clusterize-no-data">Loading data…</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    {if isset($suppliers)}
-                                        <h1>Categories</h1>
-                                        <select id="suppliers" name="suppliers"  style="width: 100%; margin-bottom: 30px;" multiple size="5">
-                                        {foreach from=$suppliers item=supplier}
-                                            <option class="list-group-item" value="{$supplier.id_supplier}">{$supplier.meta_title}</option>
-                                        {/foreach}
-                                        </select>
-                                    {/if}
+                                    <h1>Categories</h1>
+                                    <div id="scrollCategoryArea" class="clusterize-scroll list-group col">
+                                        <div id="contentCategoryArea" class="clusterize-content">
+                                            <div class="clusterize-no-data">Loading data…</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
-                                    {if isset($suppliers)}
-                                        <h1>Models</h1>
-                                        <select id="suppliers" name="suppliers"  style="width: 100%; margin-bottom: 30px;" multiple size="5">
-                                        {foreach from=$suppliers item=supplier}
-                                            <option class="list-group-item" value="{$supplier.id_supplier}">{$supplier.meta_title}</option>
-                                        {/foreach}
-                                        </select>
-                                    {/if}
+                                    <h1>Models</h1>
+                                    <div id="scrollModelArea" class="clusterize-scroll list-group col">
+                                        <div id="contentModelArea" class="clusterize-content">
+                                            <div class="clusterize-no-data">Loading data…</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +83,6 @@
                         </div>
                     </div>
                     <div class="row" style="padding: 30px 10px;">
-                    {if isset($brands)}
                         <div class="col-md-12">
                             <h1>Products</h1>
                             <div class="choice-table table-responsive">
@@ -109,7 +102,6 @@
                                 </table>
                             </div>
                         </div>
-                    {/if}
                         <hr>
                     </div>
                 </div>

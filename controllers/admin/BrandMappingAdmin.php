@@ -49,7 +49,7 @@ class BrandMappingAdminController extends ModuleAdminController
         die(json_encode($response));
     }
 
-    public function ajaxProcessGetSupplier()
+    public function ajaxProcessGetSupplierBrand()
     {
         $id_supplier = Tools::getValue('id_supplier');
 
@@ -74,16 +74,10 @@ class BrandMappingAdminController extends ModuleAdminController
     {
         parent::initContent();
 
-        $suppliers = Db::getInstance()->executeS('SELECT *
-			FROM `'._DB_PREFIX_.'supplier_feeds`'
-        );
-        $get_brands =Db::getInstance()->executeS('SELECT data
-			FROM `'._DB_PREFIX_.'icecat` WHERE list_name=\'supplier\''
-        );
+        $suppliers = Db::getInstance()->executeS('SELECT * FROM `'._DB_PREFIX_.'supplier_feeds`');
+        $get_brands =Db::getInstance()->executeS('SELECT data FROM `'._DB_PREFIX_.'icecat` WHERE list_name=\'supplier\'');
         $brands = json_decode($get_brands[0]["data"], true);
-        $categories =Db::getInstance()->executeS('SELECT data
-			FROM `'._DB_PREFIX_.'icecat` WHERE list_name=\'category\''
-        );
+        $categories =Db::getInstance()->executeS('SELECT data FROM `'._DB_PREFIX_.'icecat` WHERE list_name=\'category\'');
         $categories = json_decode($categories[0]["data"]);
         // var_dump($get_brands[0]["data"]);
         $link = new LinkCore;

@@ -44,7 +44,7 @@ $(document).ready(function(){
             data: {
                 ajax: true,
                 controller: 'CategoryMappingAdmin',
-                action: 'getSupplier',
+                action: 'getSupplierCategory',
                 id_supplier: this.value,
             },
             success: function (data) {

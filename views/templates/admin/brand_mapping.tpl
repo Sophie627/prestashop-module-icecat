@@ -22,7 +22,7 @@
                             </div>
                         {/if}
                         <div class="row">
-                            <div class="col-md-4">
+                        <div class="col-md-4">
                                 <h1>Icecat brands</h1>
                                 <div id="scrollIcecatArea" class="clusterize-scroll list-group col">
                                     <div id="contentIcecatArea" class="clusterize-content" ondrop="on_icecat_drop(event);" ondragover="on_icecat_dragover(event)" ondragleave="on_icecat_dragleave(event)" onmousedown="on_icecat_mousedown(event)">

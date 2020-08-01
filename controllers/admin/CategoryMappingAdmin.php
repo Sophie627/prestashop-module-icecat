@@ -49,7 +49,7 @@ class CategoryMappingAdminController extends ModuleAdminController
         die(json_encode($response));
     }
 
-    public function ajaxProcessGetSupplier()
+    public function ajaxProcessGetSupplierCategory()
     {
         $id_supplier = Tools::getValue('id_supplier');
 

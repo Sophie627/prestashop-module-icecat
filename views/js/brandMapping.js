@@ -32,7 +32,7 @@ $(document).ready(function(){
             data: {
                 ajax: true,
                 controller: 'BrandMappingAdmin',
-                action: 'getSupplier',
+                action: 'getSupplierBrand',
                 id_supplier: this.value,
             },
             success: function (data) {
