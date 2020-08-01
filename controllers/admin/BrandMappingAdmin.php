@@ -53,9 +53,7 @@ class BrandMappingAdminController extends ModuleAdminController
     {
         $id_supplier = Tools::getValue('id_supplier');
 
-        $suppliers = Db::getInstance()->executeS("SELECT *
-			FROM `"._DB_PREFIX_."supplier_feeds` WHERE `id_supplier`='$id_supplier'"
-        );
+        $suppliers = Db::getInstance()->executeS("SELECT * FROM `"._DB_PREFIX_."supplier_feeds` WHERE `id_supplier`='$id_supplier'");
         $supplier = $suppliers[0];
 
         $tableName = _DB_PREFIX_ . 'supplier_feed_' . $supplier['meta_title'];

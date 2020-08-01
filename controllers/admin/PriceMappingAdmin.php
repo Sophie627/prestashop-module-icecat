@@ -59,6 +59,31 @@ class PriceMappingAdminController extends ModuleAdminController
 		die(json_encode($response));
 	}
 
+	public function ajaxProcessFilterproductForPrice()
+	{
+	    $id_supplier = Tools::getValue('id_supplier');
+	    $brand = Tools::getValue('brand');
+	    $category = Tools::getValue('category');
+	    $model = Tools::getValue('model');
+
+		$suppliers = Db::getInstance()->executeS("SELECT * FROM `" . _DB_PREFIX_ . "supplier_feeds`" . ($id_supplier == null ? '' : " WHERE `id_supplier` = '$id_supplier'"));
+		$supplier_data = [];
+
+		$query_str = ' WHERE true' . ($brand == null ? '' : " AND `manufacturer` = '$brand'") . ($category == null ? '' : " AND `category` = '$category'") . ($model == null ? '' : " AND `model` = '$model'");
+
+        foreach ($suppliers as $supplier) {
+            $tableName = _DB_PREFIX_ . 'supplier_feed_' . $supplier['meta_title'];
+            $supplier_data = array_merge($supplier_data, Db::getInstance()->executeS("SELECT `manufacturer`, `model`, `category` FROM `$tableName`" . $query_str));
+        }
+
+		$response = array(
+			'status' => true,
+			'supplier_data' => $supplier_data,
+		);
+
+		die(json_encode($response));
+	}
+
 	public function initContent()
 	{
 		parent::initContent();
