@@ -64,7 +64,6 @@ $(document).ready(function(){
     });
     $("#suppliers").change(function(){
         selectedSupplier = this.value;
-        // document.getElementById("contentFeedArea").innerHTML = '<div class="clusterize-no-data">Loading data…</div>';
         ajaxFilter(selectedSupplier, selectedBrand, selectedCategory, selectedModel);
     });
 });
@@ -72,55 +71,73 @@ $(document).ready(function(){
 function on_brand_click(event) {
     selectedBrand = event.target.attributes.value.nodeValue;
     if (selectedBrandList != null) selectedBrandList.classList.remove('selected-list');
-    selectedBrandList = event.target;
-    selectedBrandList.classList.add('selected-list');
+    if (selectedBrandList == event.target) {
+        selectedBrandList = null;
+        selectedBrand = null;
+    } else {
+        selectedBrandList = event.target;
+        selectedBrandList.classList.add('selected-list');
+    }
     ajaxFilter(selectedSupplier, selectedBrand, selectedCategory, selectedModel);
 }
 
 function on_category_click(event) {
     selectedCategory = event.target.attributes.value.nodeValue;
     if (selectedCategoryList != null) selectedCategoryList.classList.remove('selected-list');
-    selectedCategoryList = event.target;
-    selectedCategoryList.classList.add('selected-list');
+    if (selectedCategoryList == event.target) {
+        selectedCategoryList = null;
+        selectedCategory = null;
+    } else {
+        selectedCategoryList = event.target;
+        selectedCategoryList.classList.add('selected-list');
+    }
     ajaxFilter(selectedSupplier, selectedBrand, selectedCategory, selectedModel);
 }
 
 function on_model_click(event) {
     selectedModel = event.target.attributes.value.nodeValue;
     if (selectedModelList != null) selectedModelList.classList.remove('selected-list');
-    selectedModelList = event.target;
-    selectedModelList.classList.add('selected-list');
+    if (selectedModelList == event.target) {
+        selectedModelList = null;
+        selectedModel = null;
+    } else {
+        selectedModelList = event.target;
+        selectedModelList.classList.add('selected-list');
+    }
     ajaxFilter(selectedSupplier, selectedBrand, selectedCategory, selectedModel);
 }
 
 function ajaxFilter(supplier, brand, category, model) {
-    $.ajax({
-        type: 'POST',
-        dataType: 'json',
-        url: mapping_ajax_link,
-        data: {
-            ajax: true,
-            controller: 'PriceMappingAdmin',
-            action: 'filterProductForPrice',
-            id_supplier: supplier,
-            brand: brand,
-            category: category,
-            model: model,
-        },
-        success: function (data) {
-            console.log(data);
-        //     if(typeof data.status !== "undefined"){
-        //         var feed_brand_data = [];
-        //         Object.entries(data.supplier_brands).forEach(entry => {
-        //             const [key, value] = entry;
-        //             feed_brand_data.push('<div class="list-group-item" data-id=key data-label=value.manufacturer draggable="true">' + value.manufacturer + '</div>');
-        //         });
-        //         var clusterize = new Clusterize({
-        //             rows: feed_brand_data,
-        //             scrollId: 'scrollFeedArea',
-        //             contentId: 'contentFeedArea'
-        //         });
-        //     }
-        },
-    });
+    if (supplier != null || brand != null || category != null || model != null) {
+        document.getElementById("contentProductArea").innerHTML = '<tr class="clusterize-no-data"><td style="text-align: center;">Loading data…</td></tr>';
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: mapping_ajax_link,
+            data: {
+                ajax: true,
+                controller: 'PriceMappingAdmin',
+                action: 'filterProductForPrice',
+                id_supplier: supplier,
+                brand: brand,
+                category: category,
+                model: model,
+            },
+            success: function (data) {
+                console.log(data);
+                if(typeof data.status !== "undefined"){
+                    var product_data = [];
+                    Object.entries(data.supplier_data).forEach(entry => {
+                        const [key, value] = entry;
+                        product_data.push('<tr><td style="width: 10%"></td><td style="width: 8%"></td><td class="text-center" style="width: 5%">' + value.manufacturer + '</td><td class="text-center"  style="width: 30%">' + value.model + '</td><td class="text-center" style="width: 40%">' + value.category + '</td><td style="width: 7%"></td></tr>');
+                    });
+                    var clusterize = new Clusterize({
+                        rows: product_data,
+                        scrollId: 'scrollProductArea',
+                        contentId: 'contentProductArea'
+                    });
+                }
+            },
+        });
+    }
 }

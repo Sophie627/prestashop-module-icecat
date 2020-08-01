@@ -85,21 +85,26 @@
                     <div class="row" style="padding: 30px 10px;">
                         <div class="col-md-12">
                             <h1>Products</h1>
-                            <div class="choice-table table-responsive">
-                                <table class="table">
+                            <div class="clusterize choice-table table-responsive">
+                                <table class="table" style="margin: 0;">
                                     <thead>
-                                        <tr>
-                                            <th>ProductID</th>
-                                            <th>Image</th>
-                                            <th class="text-center">Manufacturer</th>
-                                            <th class="text-center">Model</th>
-                                            <th class="text-center">Category</th>
-                                            <th class="text-center">Price</th>
-                                        </tr>
+                                    <tr>
+                                        <th style="width: 10%">ProductID</th>
+                                        <th style="width: 8%">Image</th>
+                                        <th class="text-center" style="width: 5%">Manufacturer</th>
+                                        <th class="text-center" style="width: 30%">Model</th>
+                                        <th class="text-center" style="width: 40%">Category</th>
+                                        <th style="width: 7%">Price</th>
+                                    </tr>
                                     </thead>
-                                    <tbody>
-                                    </tbody>
                                 </table>
+                                <div id="scrollProductArea" class="clusterize-scroll list-group">
+                                    <table class="table">
+                                        <tbody id="contentProductArea" class="clusterize-content">
+
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                         <hr>
