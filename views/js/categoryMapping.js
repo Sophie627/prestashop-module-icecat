@@ -10,11 +10,20 @@ $(document).ready(function(){
             action: 'getCategory',
         },
         success: function (data) {
+            console.log(data.categories);
+            var buildTree = (treeData, parentLayer, parentNode) => {
+                if(typeof treeData.subs !== "undefined") {
+                    var i = 0;
+                    Object.entries(treeData.subs).forEach(entry => {
+                        const [key, value] = entry;
+                        icecat_category_data.push('<div class="list-group-item" parent-layer="' + parentLayer + '" parent-node="' + parentNode + '" node="' + i + '" data-id=key data-label=value.title draggable="true" style="margin-left: ' + (parentLayer * 10).toString() + 'px;">' + "+".repeat(parentLayer + 1) + " " + value.title + '</div>');
+                        buildTree(value, parentLayer + 1, i);
+                        i++;
+                    });
+                }
+            };
             if(typeof data.status !== "undefined"){
-                Object.entries(data.categories.subs).forEach(entry => {
-                    const [key, value] = entry;
-                    icecat_category_data.push('<div class="list-group-item" data-id=key data-label=value.title draggable="true">' + value.title + '</div>');
-                });
+                buildTree(data.categories, 0, 0);
                 var clusterize = new Clusterize({
                     rows: icecat_category_data,
                     scrollId: 'scrollIcecatArea',
@@ -39,7 +48,7 @@ $(document).ready(function(){
                 console.log(data);
                 if(typeof data.status !== "undefined"){
                     var feed_brand_data = [];
-                    Object.entries(data.supplier_products).forEach(entry => {
+                    Object.entries(data.supplier_categories).forEach(entry => {
                         const [key, value] = entry;
                         feed_brand_data.push('<div class="list-group-item" data-id=key data-label=value.category draggable="true">' + value.category + '</div>');
                     });

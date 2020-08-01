@@ -58,9 +58,9 @@
                             <h4>Price Range</h4>
                             <div style="display: flex;padding: 5px 10px 20px;">
                                 <p>$</p>
-                                <input type="text" style="margin: 0 10px; width: 100px;">
+                                <input type="text" style="margin: 0 10px; width: 60px;">
                                 <p>~</p>
-                                <input type="text" style="margin: 0 10px; width: 100px;">
+                                <input type="text" style="margin: 0 10px; width: 60px;">
                             </div>
                             <h4>Rule</h4>
                             <div style="padding: 5px 10px 20px;">

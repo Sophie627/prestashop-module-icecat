@@ -59,12 +59,12 @@ class CategoryMappingAdminController extends ModuleAdminController
         $supplier = $suppliers[0];
 
         $tableName = _DB_PREFIX_ . 'supplier_feed_' . $supplier['meta_title'];
-        $supplier_products = Db::getInstance()->executeS("SELECT * FROM `$tableName` LIMIT 20");
+        $supplier_categories = Db::getInstance()->executeS("SELECT category FROM `$tableName` GROUP BY category");
 
         $response = array(
             'status' => true,
             'headers' => $supplier['fields'],
-            'supplier_products' => $supplier_products
+            'supplier_categories' => $supplier_categories
         );
 
         die(json_encode($response));
